@@ -1,0 +1,1 @@
+# CodeCraft Finance Manager application package.
