@@ -46,7 +46,7 @@ The application provides a clean desktop interface with financial summaries, cha
 1. Clone the repository:
 
    ```bash
-   git clone YOUR_GITHUB_REPOSITORY_URL
+   git clone https://github.com/shazinnausar-spec/CodeCraftFinanceManager.git
    ```
 
 2. Navigate to the project directory:
@@ -113,23 +113,45 @@ Users can choose between the `LKR` and `Rs.` display formats. Changing the displ
 CodeCraftFinanceManager/
 │
 ├── app/
-│   ├── assets/
-│   │   ├── icons/
-│   │   └── images/
+│   ├── __init__.py
 │   ├── database/
-│   ├── models/
+│   │   ├── __init__.py
+│   │   └── connection.py
 │   ├── services/
+│   │   ├── __init__.py
+│   │   ├── backup_service.py
+│   │   ├── budget_service.py
+│   │   ├── category_service.py
+│   │   ├── dashboard_service.py
+│   │   ├── money_service.py
+│   │   ├── report_service.py
+│   │   ├── settings_service.py
+│   │   └── transaction_service.py
 │   ├── ui/
-│   │   ├── components/
-│   │   ├── dialogs/
-│   │   └── pages/
+│   │   ├── __init__.py
+│   │   ├── about_view.py
+│   │   ├── backup_view.py
+│   │   ├── budgets_view.py
+│   │   ├── categories_view.py
+│   │   ├── dashboard_view.py
+│   │   ├── main_window.py
+│   │   ├── reports_view.py
+│   │   ├── settings_view.py
+│   │   └── transactions_view.py
 │   └── utils/
+│       ├── __init__.py
+│       └── validators.py
 │
-├── backups/
-├── data/
-├── screenshots/
 ├── tests/
+│   ├── test_backup.py
+│   ├── test_budgets.py
+│   ├── test_dashboard.py
+│   ├── test_database.py
+│   ├── test_reports.py
+│   ├── test_services.py
+│   └── test_settings.py
 │
+├── .gitignore
 ├── config.py
 ├── main.py
 ├── requirements.txt
