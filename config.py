@@ -63,13 +63,53 @@ FONT_SIZE_LARGE = 20
 FONT_SIZE_TITLE = 26
 FONT_SIZE_HEADING = 30
 
+import os
+import sys
+
 from pathlib import Path
+
 
 # Get the main project directory.
 BASE_DIR = Path(__file__).resolve().parent
 
-# Store the development database inside the data folder.
-DATA_DIR = BASE_DIR / "data"
+
+# ------------------------------------------------------------
+# APPLICATION DATA DIRECTORY
+# ------------------------------------------------------------
+
+# Check whether the application is running as a PyInstaller EXE.
+if getattr(sys, "frozen", False):
+
+    # Use the Windows Local Application Data directory.
+    LOCAL_APP_DATA = Path(
+        os.environ.get(
+            "LOCALAPPDATA",
+            str(Path.home() / "AppData" / "Local")
+        )
+    )
+
+    # Store packaged application data separately from the EXE.
+    APP_DATA_DIR = (
+        LOCAL_APP_DATA
+        / "CodeCraftStudio"
+        / "CodeCraftFinanceManager"
+    )
+
+    # Store backups alongside the packaged application's data.
+    BACKUP_DIR = APP_DATA_DIR / "backups"
+
+else:
+
+    # Keep existing development data in its original location.
+    APP_DATA_DIR = BASE_DIR / "data"
+
+    # Preserve the existing development backup directory.
+    BACKUP_DIR = BASE_DIR / "backups"
+
+
+# Maintain compatibility with existing application services.
+DATA_DIR = APP_DATA_DIR
+
 
 # Full path to the SQLite database.
 DATABASE_PATH = DATA_DIR / "finance.db"

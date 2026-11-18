@@ -12,8 +12,8 @@ from pathlib import Path
 from tkinter import filedialog, messagebox
 
 from config import (
-    BASE_DIR,
     DATABASE_PATH,
+    BACKUP_DIR,
     COLORS,
     FONT_FAMILY,
     FONT_SIZE_SMALL,
@@ -26,11 +26,6 @@ from app.services.backup_service import (
     create_database_backup,
     restore_database_backup,
 )
-
-
-# Default backup directory.
-BACKUP_DIR = BASE_DIR / "backups"
-
 
 class BackupView(ctk.CTkFrame):
     """Database backup and restore management page."""
